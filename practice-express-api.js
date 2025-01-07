@@ -12,13 +12,12 @@ app.get("/pokemon", function (req, res) {
 app.get("/pokemon/:name", function (req, res) {
     console.log(req.params.name)
 
-const pokemonName = req.params.name
+    const pokemonName = req.params.name
+    const pokemons = pokemon.find((currentPokemon) => {
+        return currentPokemon.name.toLowerCase() === pokemonName.toLowerCase()
+    })
 
-const pokemons = pokemon.find((currentPokemon) => {
-    return currentPokemon.name.toLowerCase() === pokemonName.toLowerCase()
-})
-
-res.send(pokemons)
+    res.send(pokemons)
 })
 
 
